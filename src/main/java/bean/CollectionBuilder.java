@@ -32,7 +32,7 @@ public class CollectionBuilder {
                 .addPossede(new Bd(next(), "7", "Le cycle du feu - I", ""))
                 .addPossede(new Bd(next(), "8", "Le cycle du feu - II", ""))
                 .addPossede(new Bd(next(), "9", "Le cycle du vide - I", ""))
-                .addManquante(new Bd(next(), "10", "Le cycle du vide - II", ""))
+                .addManquante(new Bd(next(), "10", "Le cycle du vide - II", "http://www.bedetheque.com/media/Couvertures/Couv_258069.jpg"))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_41693.jpg")
                 .withEditeur("Delcourt"));
 
@@ -55,6 +55,7 @@ public class CollectionBuilder {
                 .addPossede(new Bd(next(), "7", "Frères d'armes", ""))
                 .addPossede(new Bd(next(), "8", "Frères de sang", ""))
                 .addPossede(new Bd(next(), "9", "Ogomo", ""))
+                .addManquante(new Bd(next(),"10", "Ririko","http://www.bedetheque.com/media/Couvertures/Couv_258014.jpg"))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/samurai02.jpg")
                 .withEditeur("Soleil"));
 
