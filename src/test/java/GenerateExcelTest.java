@@ -103,7 +103,7 @@ public class GenerateExcelTest {
         }
     }
 
-    @Test
+    @Test(enabled = false)
     public void testExport() throws IOException {
         export();
         exportExcel();
