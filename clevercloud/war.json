@@ -4,7 +4,7 @@
       "goal": "package"
    },
    "deploy": {
-      "container": "TOMCAT8",
+      "container": "JBOSS7",
       "war": [
          {
             "file": "target/collectionbdserver.war",
