@@ -7,7 +7,7 @@
       "container": "JBOSS7",
       "war": [
          {
-            "file": "target/collectionbdserver.war",
+            "file": "target/collectionbdserver.war"
          }
       ]
    }
