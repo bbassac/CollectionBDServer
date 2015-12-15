@@ -10,8 +10,8 @@ public class CollectionBuilder {
                 .addPossede(new Bd(next(), "2", "Les liens du sang", ""))
                 .addPossede(new Bd(next(), "3", "La Bataille de Cad Goddun", ""))
                 .addManquante(new Bd(next(), "4", "Le chaudron du sang", ""))
-                .addManquante(new Bd(next(), "5", "Resurection", ""))
-                .addManquante(new Bd(next(), "6", "La terre brulee", ""))
+                .addManquante(new Bd(next(), "5", "Résurrection", ""))
+                .addManquante(new Bd(next(), "6", "La terre brulée", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Arawn1_26012008_153221.jpg")
                 .withEditeur("Soleil Celtic"));
 
@@ -40,7 +40,7 @@ public class CollectionBuilder {
                 .addPossede(new Bd(next(), "1", "Le Dernier Temple d'Asclépios", ""))
                 .addPossede(new Bd(next(), "2", "Ad Naturam", ""))
                 .addPossede(new Bd(next(), "3", "Les Eaux noires de Venise", ""))
-                .addPossede(new Bd(next(), "4", "Le jour du Bapteme", ""))
+                .addPossede(new Bd(next(), "4", "Le jour du Baptême", ""))
                 .addManquante(new Bd(next(), "HS1", "Le Grimoire de La Licorne 12/2010", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_58319.jpg")
                 .withEditeur("Delcourt"));
@@ -65,7 +65,7 @@ public class CollectionBuilder {
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_135417.jpg")
                 .withEditeur("Soleil Celtic"));
 
-        c.addBD(new Serie(next(), "Samurai Legendes", true)
+        c.addBD(new Serie(next(), "Samurai Légendes", true)
                 .addPossede(new Bd(next(), "1", "Furiko", ""))
                 .addPossede(new Bd(next(), "2", "L'échange", ""))
                 .addPossede(new Bd(next(), "3", "L'aube Rouge", ""))
@@ -87,7 +87,7 @@ public class CollectionBuilder {
         c.addBD(new Serie(next(), "Konungar", true)
                 .addPossede(new Bd(next(), "1", "Invasions", ""))
                 .addPossede(new Bd(next(), "2", "Les guerriers du neant", ""))
-                .addPossede(new Bd(next(), "3", "Le chatiment", ""))
+                .addPossede(new Bd(next(), "3", "Le châtiment", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_126735.jpg")
                 .withEditeur("Glenat"));
 

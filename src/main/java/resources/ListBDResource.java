@@ -13,7 +13,6 @@ import java.sql.SQLException;
 @Path("/listing")
 public class ListBDResource {
 
-
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Collection get() throws SQLException, NamingException {
