@@ -8,6 +8,9 @@
       "war": [
          {
             "file": "target/collectionbdserver.war"
+         },
+         {
+            "file": "src/main/resources/META-INF/mysql-ds.xml"
          }
       ]
    }

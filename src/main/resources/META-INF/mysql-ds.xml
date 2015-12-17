@@ -1,0 +1,25 @@
+<datasources>
+   <datasource jndi-name="java:jboss/mysqlDS" pool-name="mysqlDS">
+      <connection-url>jdbc:mysql://localhost:3306/bx3gu5ncx</connection-url>
+         <driver>com.mysql</driver>
+      <transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation>
+      <pool>
+        <min-pool-size>10</min-pool-size>
+        <max-pool-size>100</max-pool-size>
+        <prefill>true</prefill>
+      </pool>
+      <security>
+        <user-name>up0ykpafma3su1qa</user-name>
+        <password>EINXN3OwfYIQd6k3AaQ</password>
+      </security>
+      <statement>
+        <prepared-statement-cache-size>32</prepared-statement-cache-size>
+        <share-prepared-statements/>
+      </statement>
+    </datasource>
+    <drivers>
+      <driver name="com.mysql" module="com.mysql">
+        <xa-datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</xa-datasource-class>
+      </driver>
+    </drivers>
+</datasources>

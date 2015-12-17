@@ -1,40 +1,37 @@
 package resources;
 
-import bean.Collection;
-import bean.CollectionBuilder;
+import bean.Test;
 
+import javax.annotation.sql.DataSourceDefinition;
+import javax.ejb.Stateless;
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.persistence.*;
+import javax.transaction.Transactional;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 @Path("/listing-sql")
+@Transactional
 public class ListBDSQLResource {
+
+    @javax.enterprise.inject.Produces
+    @PersistenceContext(unitName = "persistenceUnit")
+    private EntityManager manager;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String get() throws SQLException, NamingException {
-        String url = "jdbc:mysql://" + System.getenv("MYSQL_ADDON_HOST") + ":3306/" + System.getenv("MYSQL_ADDON_DB");
-        String utilisateur = System.getenv("MYSQL_ADDON_USER");
-        String motDePasse = System.getenv("MYSQL_ADDON_PASSWORD");
-        StringBuilder output = new StringBuilder();
-        Connection connexion = null;
-        connexion = DriverManager.getConnection( url, utilisateur, motDePasse );
 
-        ResultSet rs = connexion.createStatement().executeQuery(
-                "select 1 from dual");
+    public List get() throws SQLException, NamingException {
 
-        while (rs.next()) {
-            output.append(
-                    rs.getInt(1));
+        List list = manager.createNativeQuery("Select id, title from test", Test.class).getResultList();
 
-        }
-        return output.toString();
+        return list;
     }
 
 }
