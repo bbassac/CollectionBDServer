@@ -9,7 +9,6 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-
     <name>collectionbdserver</name>
     <url>http://maven.apache.org</url>
     <properties>
@@ -71,11 +70,6 @@
             <version>2.3</version>
             <scope>test</scope>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>org.hibernate</groupId>-->
-            <!--<artifactId>hibernate-entitymanager</artifactId>-->
-            <!--<version>5.0.5.Final</version>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
