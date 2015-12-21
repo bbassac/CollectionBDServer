@@ -1,18 +1,37 @@
 package bean;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.codehaus.jackson.annotate.JsonBackReference;
+
+import javax.persistence.*;
+
 /**
  * Created by b.bassac on 12/01/2015.
  */
+@Entity
+@Table(name = "BD")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Bd {
-    private int id;
+    @Id
+    @Column(name="ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(name="TITRE")
     private String titre;
+    @Column(name="NUMERO")
     private String numero;
+    @Column(name="COUVERTURE_URL")
     private String couvertureUrl;
+
+    @ManyToOne
+    @JsonBackReference
+    private Serie serie;
 
     public Bd() {
     }
 
-    public Bd(int id, String numero, String titre, String url) {
+    public Bd(Long id, String numero, String titre, String url) {
         this.id = id;
         this.numero = numero;
         this.titre = titre;
@@ -35,11 +54,11 @@ public class Bd {
         this.numero = numero;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -49,5 +68,13 @@ public class Bd {
 
     public void setTitre(String titre) {
         this.titre = titre;
+    }
+
+    public Serie getSerie() {
+        return serie;
+    }
+
+    public void setSerie(Serie serie) {
+        this.serie = serie;
     }
 }

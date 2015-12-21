@@ -8,10 +8,15 @@
         <description>
             Persistence unit for the JPA tutorial of the Hibernate Getting Started Guide
         </description>
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <jta-data-source>java:jboss/mysqlDS</jta-data-source>
-        <class>bean.Test</class>
+        <class>bean.Bd</class>
+        <class>bean.Collection</class>
+        <class>bean.Serie</class>
         <properties>
             <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform"/>
+
+            <property name="hibernate.id.new_generator_mappings" value="false"/>
         </properties>
 
     </persistence-unit>

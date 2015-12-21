@@ -1,70 +1,87 @@
 package bean;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.codehaus.jackson.annotate.JsonBackReference;
+import org.codehaus.jackson.annotate.JsonManagedReference;
 
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name = "SERIE")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Serie {
-
-    private int id;
+    @Id
+    @Column(name="ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(name="NOM")
     private String nom;
+    @Column(name="NUMERO")
     private String numero;
+    @Column(name="FINI")
     private boolean fini = false;
+    @Column(name="IMAGE_URL")
     private String imageUrl;
-    private String manquant;
-    private List<Bd> listPossede;
-    private List<Bd> listManquante;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = true)
+    @JsonManagedReference
+    private Set<Bd> listPossede;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = true)
+    @JsonManagedReference
+    private Set<Bd> listManquante;
+    @Column(name="EDITEUR")
     private String editeur;
 
+    @ManyToOne
+    @JsonBackReference
+    private Collection collection;
 
     // Must have no-argument constructor
     public Serie() {
 
     }
 
-    public Serie(int id, String nom, String numero) {
+    public Serie(Long id, String nom, String numero) {
         this.nom = nom;
         this.numero = numero;
         this.id = id;
-        listPossede = new ArrayList<>(20);
-        listManquante = new ArrayList<>(20);
+        listPossede = new HashSet<>(20);
+        listManquante = new HashSet<>(20);
     }
 
-    public Serie(int id, String nom, boolean fini) {
+    public Serie(Long id, String nom, boolean fini) {
         this(id, nom, "");
         this.fini = fini;
     }
 
-    public Serie(int id, String nom) {
+    public Serie(Long id, String nom) {
         this(id, nom, false);
     }
 
-    public Serie(int id, String nom, String numero, boolean fini) {
+    public Serie(Long id, String nom, String numero, boolean fini) {
         this(id, nom, numero);
         this.fini = fini;
     }
 
-    public List<Bd> getListPossede() {
+    public Set<Bd> getListPossede() {
         return listPossede;
     }
 
-    public void setListPossede(List<Bd> listPossede) {
+    public void setListPossede(Set<Bd> listPossede) {
         this.listPossede = listPossede;
     }
 
-    public List<Bd> getListManquante() {
+    public Set<Bd> getListManquante() {
         return listManquante;
     }
 
-    public void setListManquante(List<Bd> listManquante) {
+    public void setListManquante(Set<Bd> listManquante) {
         this.listManquante = listManquante;
-    }
-
-    public String getManquant() {
-        return manquant;
-    }
-
-    public void setManquant(String manquant) {
-        this.manquant = manquant;
     }
 
     public String getImageUrl() {
@@ -77,19 +94,21 @@ public class Serie {
 
     public Serie addPossede(Bd bd) {
         this.listPossede.add(bd);
+        bd.setSerie(this);
         return this;
     }
 
     public Serie addManquante(Bd bd) {
         this.listManquante.add(bd);
+        bd.setSerie(this);
         return this;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -122,11 +141,6 @@ public class Serie {
         return this;
     }
 
-    public Serie withManquant(String manquant) {
-        this.setManquant(manquant);
-        return this;
-    }
-
     public Serie withEditeur(String editeur) {
         this.setEditeur(editeur);
         return this;
@@ -138,5 +152,13 @@ public class Serie {
 
     public void setEditeur(String editeur) {
         this.editeur = editeur;
+    }
+
+    public Collection getCollection() {
+        return collection;
+    }
+
+    public void setCollection(Collection collection) {
+        this.collection = collection;
     }
 }

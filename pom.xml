@@ -81,6 +81,16 @@
             <version>3.5.6-Final</version>
         </dependency>
         <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
+            <version>1.0.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>4.3.5.Final</version>
+        </dependency>
+        <dependency>
             <groupId>org.jboss.logging</groupId>
             <artifactId>jboss-logging</artifactId>
             <version>3.3.0.Final</version>
@@ -121,9 +131,47 @@
                         </jvmArgs>
                     </configuration>
                 </plugin>
+                <!-- mvn hibernate4:export to generate schema.sql in target -->
+                <plugin>
+                    <groupId>de.juplo</groupId>
+                    <artifactId>hibernate4-maven-plugin</artifactId>
+                    <version>1.0.5</version>
+                    <configuration>
+                        <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                        <hibernateDialect>org.hibernate.dialect.MySQLDialect</hibernateDialect>
+                        <target>NONE</target>
+                        <type>CREATE</type>
+                    </configuration>
+                    <dependencies>
+                        <!--<dependency>
+                            <groupId>com.oracle</groupId>
+                            <artifactId>ojdbc6</artifactId>
+                            <version>11.2.0.2.0</version>
+                        </dependency>
+                        -->
+                    </dependencies>
+                </plugin>
+
             </plugins>
         </pluginManagement>
+        <plugins>
+            <!-- Plugin to generate DDL -->
+            <plugin>
+                <groupId>de.juplo</groupId>
+                <artifactId>hibernate4-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>generate-dll</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>export</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
+
 
 
 </project>

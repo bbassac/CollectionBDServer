@@ -1,37 +1,54 @@
 package resources;
 
-import bean.Test;
+import bean.Bd;
+import bean.Collection;
+import bean.CollectionBuilder;
 
-import javax.annotation.sql.DataSourceDefinition;
-import javax.ejb.Stateless;
-import javax.naming.Context;
-import javax.naming.InitialContext;
+import javax.ejb.*;
 import javax.naming.NamingException;
-import javax.persistence.*;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
-import java.util.List;
 
 @Path("/listing-sql")
-@Transactional
+@Stateless
 public class ListBDSQLResource {
 
-    @javax.enterprise.inject.Produces
     @PersistenceContext(unitName = "persistenceUnit")
-    private EntityManager manager;
+    private EntityManager entityManager;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    public Collection get() throws SQLException, NamingException {
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Collection> query = builder.createQuery(Collection.class);
 
-    public List get() throws SQLException, NamingException {
+        Root<Collection> cal = query.from(Collection.class);
+        query.select(cal);
+        TypedQuery<Collection> myQuery = entityManager.createQuery(query);
 
-        List list = manager.createNativeQuery("Select id, title from test", Test.class).getResultList();
+        return myQuery.getSingleResult();
 
-        return list;
     }
 
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public void post() throws SQLException, NamingException {
+
+
+        entityManager.persist(CollectionBuilder.getCollection());
+
+
+    }
 }

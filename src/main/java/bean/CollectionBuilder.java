@@ -573,7 +573,8 @@ public class CollectionBuilder {
     }
 
 
-    private static int next() {
-        return i++;
+    private static Long next() {
+        //return i++;
+        return null;
     }
 }
