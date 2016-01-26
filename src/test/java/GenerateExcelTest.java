@@ -28,7 +28,7 @@ public class GenerateExcelTest {
         wb.write(fileOut);
         fileOut.close();
     }
-    @Test
+
     public static void export() {
         Collection coll = CollectionBuilder.getCollection(true);
         String json = new GsonBuilder().setPrettyPrinting().create().toJson(coll);
