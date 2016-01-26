@@ -1,6 +1,6 @@
 <datasources>
    <datasource jndi-name="java:jboss/mysqlDS" pool-name="mysqlDS" jta="true">
-      <connection-url>jdbc:mysql://localhost:3306/bx3gu5ncx?useSSL=false</connection-url>
+      <connection-url>jdbc:mysql://bx3gu5ncx.mysql.clvrcld.net:3306/bx3gu5ncx?useSSL=false</connection-url>
          <driver>com.mysql</driver>
       <!--<transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation>-->
       <pool>

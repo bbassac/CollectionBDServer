@@ -16,7 +16,7 @@ public class ListBDResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Collection get() throws SQLException, NamingException {
-        return CollectionBuilder.getCollection();
+        return CollectionBuilder.getCollection(true);
     }
 
 }

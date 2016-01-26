@@ -1,6 +1,5 @@
 package resources;
 
-import bean.Bd;
 import bean.Collection;
 import bean.CollectionBuilder;
 
@@ -8,12 +7,10 @@ import javax.ejb.*;
 import javax.naming.NamingException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import javax.transaction.Transactional;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -47,7 +44,7 @@ public class ListBDSQLResource {
     public void post() throws SQLException, NamingException {
 
 
-        entityManager.persist(CollectionBuilder.getCollection());
+        entityManager.persist(CollectionBuilder.getCollection(false));
 
 
     }

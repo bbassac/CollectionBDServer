@@ -28,9 +28,9 @@ public class GenerateExcelTest {
         wb.write(fileOut);
         fileOut.close();
     }
-
+    @Test
     public static void export() {
-        Collection coll = CollectionBuilder.getCollection();
+        Collection coll = CollectionBuilder.getCollection(true);
         String json = new GsonBuilder().setPrettyPrinting().create().toJson(coll);
 
         StringBuilder builder = new StringBuilder();
@@ -49,7 +49,7 @@ public class GenerateExcelTest {
 
     private static void fillBody(Workbook wb, CreationHelper createHelper) {
         Sheet sheet = wb.createSheet("Listing");
-        Collection coll = CollectionBuilder.getCollection();
+        Collection coll = CollectionBuilder.getCollection(true);
         int lineIndex = 0;
         // Create a row and put some cells in it. Rows are 0 based.
         Row rowTitles = sheet.createRow((short) lineIndex);
