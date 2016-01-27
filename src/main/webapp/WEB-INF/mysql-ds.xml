@@ -1,8 +1,8 @@
 <datasources>
    <datasource jndi-name="java:jboss/mysqlDS" pool-name="mysqlDS" jta="true">
       <connection-url>jdbc:mysql://bx3gu5ncx.mysql.clvrcld.net:3306/bx3gu5ncx?useSSL=false</connection-url>
-         <driver>com.mysql</driver>
-      <!--<transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation>-->
+         <!--<driver>com.mysql</driver>-->
+        <driver>org.codehaus.cargo.classpath.mysql</driver>
       <pool>
         <min-pool-size>10</min-pool-size>
         <max-pool-size>100</max-pool-size>
