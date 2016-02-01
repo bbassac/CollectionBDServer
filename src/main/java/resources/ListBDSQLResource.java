@@ -26,7 +26,7 @@ public class ListBDSQLResource {
     private EntityManager entityManager;
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces("application/json;charset=utf-8")
     public Collection get() throws SQLException, NamingException {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Collection> query = builder.createQuery(Collection.class);

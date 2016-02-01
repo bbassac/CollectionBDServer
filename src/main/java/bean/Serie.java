@@ -4,10 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.codehaus.jackson.annotate.JsonBackReference;
 import org.codehaus.jackson.annotate.JsonManagedReference;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "SERIE")
@@ -19,21 +20,21 @@ public class Serie {
     private Long id;
     @Column(name="NOM")
     private String nom;
-    @Column(name="NUMERO")
-    private String numero;
     @Column(name="FINI")
     private boolean fini = false;
     @Column(name="IMAGE_URL")
     private String imageUrl;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(nullable = true)
     @JsonManagedReference
-    private Set<Bd> listPossede;
+    private List<Bd> listPossede;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(nullable = true)
     @JsonManagedReference
-    private Set<Bd> listManquante;
+    private List<Bd> listManquante;
     @Column(name="EDITEUR")
     private String editeur;
 
@@ -46,41 +47,26 @@ public class Serie {
 
     }
 
-    public Serie(Long id, String nom, String numero) {
-        this.nom = nom;
-        this.numero = numero;
-        this.id = id;
-        listPossede = new HashSet<>(20);
-        listManquante = new HashSet<>(20);
-    }
-
-    public Serie(Long id, String nom, boolean fini) {
-        this(id, nom, "");
-        this.fini = fini;
-    }
-
     public Serie(Long id, String nom) {
-        this(id, nom, false);
+        this.nom = nom;
+        this.id = id;
+        listPossede = new ArrayList<>();
+        listManquante = new ArrayList();
     }
 
-    public Serie(Long id, String nom, String numero, boolean fini) {
-        this(id, nom, numero);
-        this.fini = fini;
-    }
-
-    public Set<Bd> getListPossede() {
+    public List<Bd> getListPossede() {
         return listPossede;
     }
 
-    public void setListPossede(Set<Bd> listPossede) {
+    public void setListPossede(ArrayList<Bd> listPossede) {
         this.listPossede = listPossede;
     }
 
-    public Set<Bd> getListManquante() {
+    public List<Bd> getListManquante() {
         return listManquante;
     }
 
-    public void setListManquante(Set<Bd> listManquante) {
+    public void setListManquante(ArrayList<Bd> listManquante) {
         this.listManquante = listManquante;
     }
 
@@ -120,14 +106,6 @@ public class Serie {
         this.nom = nom;
     }
 
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
     public boolean isFini() {
         return fini;
     }
@@ -143,6 +121,11 @@ public class Serie {
 
     public Serie withEditeur(String editeur) {
         this.setEditeur(editeur);
+        return this;
+    }
+
+    public Serie withFini(boolean fini) {
+        this.setFini(fini);
         return this;
     }
 

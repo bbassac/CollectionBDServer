@@ -1,8 +1,9 @@
 package bean;
 
+import java.util.*;
+
 public class CollectionBuilder {
     static long i = 0;
-
     public static Collection getCollection(boolean withId) {
         Collection c = new Collection();
         c.setId(next(withId));
@@ -14,14 +15,16 @@ public class CollectionBuilder {
                 .addManquante(new Bd(next(withId), "5", "Résurrection", ""))
                 .addManquante(new Bd(next(withId), "6", "La terre brulée", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Arawn1_26012008_153221.jpg")
-                .withEditeur("Soleil Celtic"));
+                .withEditeur("Soleil Celtic")
+                .withFini(false));
 
 
-        c.addBD(new Serie(next(withId), "Mjollnir", true)
+        c.addBD(new Serie(next(withId), "Mjollnir")
                 .addPossede(new Bd(next(withId), "1", "Le Marteau et l'Enclume", ""))
                 .addPossede(new Bd(next(withId), "2", "Ragnarok", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_192958.jpg")
-                .withEditeur("Soleil Celtic"));
+                .withEditeur("Soleil Celtic")
+                .withFini(true));
 
         c.addBD(new Serie(next(withId), "Okko")
                 .addPossede(new Bd(next(withId), "1", "Le cycle de l'eau - I", ""))
@@ -35,7 +38,8 @@ public class CollectionBuilder {
                 .addPossede(new Bd(next(withId), "9", "Le cycle du vide - I", ""))
                 .addManquante(new Bd(next(withId), "10", "Le cycle du vide - II", "http://www.bedetheque.com/media/Couvertures/Couv_258069.jpg"))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_41693.jpg")
-                .withEditeur("Delcourt"));
+                .withEditeur("Delcourt")
+                .withFini(false));
 
         c.addBD(new Serie(next(withId), "La licorne")
                 .addPossede(new Bd(next(withId), "1", "Le Dernier Temple d'Asclépios", ""))
@@ -44,9 +48,10 @@ public class CollectionBuilder {
                 .addPossede(new Bd(next(withId), "4", "Le jour du Baptême", ""))
                 .addManquante(new Bd(next(withId), "HS1", "Le Grimoire de La Licorne 12/2010", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_58319.jpg")
-                .withEditeur("Delcourt"));
+                .withEditeur("Delcourt")
+                .withFini(false));
 
-        c.addBD(new Serie(next(withId), "Samurai", true)
+        c.addBD(new Serie(next(withId), "Samurai")
                 .addPossede(new Bd(next(withId), "1", "Le Coeur du Prophète", ""))
                 .addPossede(new Bd(next(withId), "2", "Les Sept Sources d'Akanobu", ""))
                 .addPossede(new Bd(next(withId), "3", "Le Treizième Prophète", ""))
@@ -58,44 +63,51 @@ public class CollectionBuilder {
                 .addPossede(new Bd(next(withId), "9", "Ogomo", ""))
                 .addManquante(new Bd(next(withId),"10", "Ririko","http://www.bedetheque.com/media/Couvertures/Couv_258014.jpg"))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/samurai02.jpg")
-                .withEditeur("Soleil"));
+                .withEditeur("Soleil")
+                .withFini(false));
 
-        c.addBD(new Serie(next(withId), "La guerre des Fees", true)
+        c.addBD(new Serie(next(withId), "La guerre des Fees")
                 .addPossede(new Bd(next(withId), "1", "Dans la gueule du loup", ""))
                 .addPossede(new Bd(next(withId), "2", "Aedlyn", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_135417.jpg")
-                .withEditeur("Soleil Celtic"));
+                .withEditeur("Soleil Celtic")
+                .withFini(true));
 
-        c.addBD(new Serie(next(withId), "Samurai Légendes", true)
+        c.addBD(new Serie(next(withId), "Samurai Légendes")
                 .addPossede(new Bd(next(withId), "1", "Furiko", ""))
                 .addPossede(new Bd(next(withId), "2", "L'échange", ""))
                 .addPossede(new Bd(next(withId), "3", "L'aube Rouge", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_201038.jpg")
-                .withEditeur("Soleil"));
+                .withEditeur("Soleil")
+                .withFini(true));
 
-        c.addBD(new Serie(next(withId), "Les rois forgerons", true)
+        c.addBD(new Serie(next(withId), "Les rois forgerons")
                 .addPossede(new Bd(next(withId), "1", "Le Sceau de Karzac Um Rork", ""))
                 .addPossede(new Bd(next(withId), "2", "Le Petit Père des Elfes", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_185526.jpg")
-                .withEditeur("Soleil"));
+                .withEditeur("Soleil")
+                .withFini(true));
 
-        c.addBD(new Serie(next(withId), "Nuit Safran", true)
+        c.addBD(new Serie(next(withId), "Nuit Safran")
                 .addPossede(new Bd(next(withId), "1", "Albumen l'éthéré", ""))
                 .addPossede(new Bd(next(withId), "2", "La vengeance d'Albumen", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_107222.jpg")
-                .withEditeur("Soleil"));
+                .withEditeur("Soleil")
+                .withFini(true));
 
-        c.addBD(new Serie(next(withId), "Konungar", true)
+        c.addBD(new Serie(next(withId), "Konungar")
                 .addPossede(new Bd(next(withId), "1", "Invasions", ""))
                 .addPossede(new Bd(next(withId), "2", "Les guerriers du neant", ""))
                 .addPossede(new Bd(next(withId), "3", "Le châtiment", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_126735.jpg")
-                .withEditeur("Glenat"));
+                .withEditeur("Glenat")
+                .withFini(true));
 
-        c.addBD(new Serie(next(withId), "Les arcanes d'Alya", true)
+        c.addBD(new Serie(next(withId), "Les arcanes d'Alya")
                 .addPossede(new Bd(next(withId), "1", "La chasseresse écarlate", ""))
                 .addPossede(new Bd(next(withId), "2", "Ames soeurs", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/ArcanesDalya01_66103.jpg")
+                .withFini(true)
                 .withEditeur("Soleil"));
 
         c.addBD(new Serie(next(withId), "Le chant des Stryges")
@@ -118,7 +130,8 @@ public class CollectionBuilder {
                 .addManquante(new Bd(next(withId), "HS1", "Les Stryges : mythes et réalité", ""))
                 .addManquante(new Bd(next(withId), "HS2", "Carnet de croquis", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/ChantDesStrygesLe01d092004.jpg")
-                .withEditeur("Delcourt"));
+                .withEditeur("Delcourt")
+                .withFini(false));
 
         c.addBD(new Serie(next(withId), "La geste des chevaliers Dragon")
                 .addPossede(new Bd(next(withId), "1", "Jaina", ""))
@@ -137,12 +150,15 @@ public class CollectionBuilder {
                 .addPossede(new Bd(next(withId), "14", "La Première", ""))
                 .addPossede(new Bd(next(withId), "15", "L'Ennemi", ""))
                 .addPossede(new Bd(next(withId), "16", "La Déesse", ""))
-                .addManquante(new Bd(next(withId), "17", "Amarelle - La Guerre des Sardes - I", ""))
-                .addManquante(new Bd(next(withId), "18", "Amarelle - La Guerre des Sardes - II", ""))
-                .addManquante(new Bd(next(withId), "19", "L'Antidote", ""))
+                .addPossede(new Bd(next(withId), "17", "Amarelle - La Guerre des Sardes - I", ""))
+                .addPossede(new Bd(next(withId), "18", "Amarelle - La Guerre des Sardes - II", ""))
+                .addPossede(new Bd(next(withId), "19", "L'Antidote", ""))
+                .addPossede(new Bd(next(withId), "20", "Naissance d'un empire", ""))
+                .addPossede(new Bd(next(withId), "21", "La Faucheuse d'Ishtar", ""))
                 .addManquante(new Bd(next(withId), "HS1", "Les contrees du levant", ""))
                 .withImageUrl("http://www.bedetheque.com/media/ParaBD/262coffretT04A06Soleil1_10072010_124616.jpg")
-                .withEditeur("Soleil"));
+                .withEditeur("Soleil")
+                .withFini(true));
 
         c.addBD(new Serie(next(withId), "Marie des dragons")
                 .addPossede(new Bd(next(withId), "1", "Armance", ""))
@@ -151,16 +167,18 @@ public class CollectionBuilder {
                 .addManquante(new Bd(next(withId), "4", "William", ""))
                 .addManquante(new Bd(next(withId), "5", "Les quatres", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_99004.jpg")
-                .withEditeur("Soleil"));
+                .withEditeur("Soleil")
+                .withFini(false));
 
-        c.addBD(new Serie(next(withId), "Beast", true)
+        c.addBD(new Serie(next(withId), "Beast")
                 .addPossede(new Bd(next(withId), "1", "Yunze, le dieu gardien", ""))
                 .addPossede(new Bd(next(withId), "2", "Amrath, la reine sauvage", ""))
                 .addPossede(new Bd(next(withId), "3", "Tône-thet, le passeur d'âmes", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/107550_c.jpg")
-                .withEditeur("Le Lombard"));
+                .withEditeur("Le Lombard")
+                .withFini(true));
 
-        c.addBD(new Serie(next(withId), "Lanfeust des etoiles", false)
+        c.addBD(new Serie(next(withId), "Lanfeust des etoiles")
                 .addPossede(new Bd(next(withId), "1", "Un, deux... Troy", ""))
                 .addPossede(new Bd(next(withId), "2", "Les tours de Meirrion", ""))
                 .addPossede(new Bd(next(withId), "3", "Les sables d'Abraxar", ""))
@@ -170,14 +188,16 @@ public class CollectionBuilder {
                 .addPossede(new Bd(next(withId), "7", "Le secret des Dolphantes", ""))
                 .addPossede(new Bd(next(withId), "8", "Le sang des comètes", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_7299.jpg")
-                .withEditeur("Soleil"));
+                .withEditeur("Soleil")
+                .withFini(true));
 
-        c.addBD(new Serie(next(withId), "Lanfeust de Troy Integrales", true)
+        c.addBD(new Serie(next(withId), "Lanfeust de Troy Integrales")
                 .addPossede(new Bd(next(withId), "1", "Volumes 1 2 3", ""))
                 .addManquante(new Bd(next(withId), "2", "Volumes 4 5 6", ""))
                 .addManquante(new Bd(next(withId), "3", "Volumes 7 8 encyclo", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_163937.jpg")
-                .withEditeur("Soleil"));
+                .withEditeur("Soleil")
+                .withFini(false));
 
         c.addBD(new Serie(next(withId), "Les chroniques de la lune noire")
                 .addPossede(new Bd(next(withId), "1", "Le Signe des Ténèbres", ""))
@@ -199,14 +219,16 @@ public class CollectionBuilder {
                 .addManquante(new Bd(next(withId), "16", "Terra Secunda - II", ""))
                 .addManquante(new Bd(next(withId), "HS1", "L'empire de la negation", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_955.jpg")
-                .withEditeur("Dargaud"));
+                .withEditeur("Dargaud")
+                .withFini(false));
 
-        c.addBD(new Serie(next(withId), "Les arcanes de la lune noire", true)
+        c.addBD(new Serie(next(withId), "Les arcanes de la lune noire")
                 .addPossede(new Bd(next(withId), "1", "Ghorghor Bey", ""))
                 .addPossede(new Bd(next(withId), "2", "Pile-ou-Face", ""))
                 .addPossede(new Bd(next(withId), "3", "Parsifal", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/froid.jpg")
-                .withEditeur("Dargaud"));
+                .withEditeur("Dargaud")
+                .withFini(false));
 
         c.addBD(new Serie(next(withId), "XIII")
                 .addPossede(new Bd(next(withId), "1", "Le jour du soleil noir", ""))
@@ -233,7 +255,8 @@ public class CollectionBuilder {
                 .addManquante(new Bd(next(withId), "22", "Retour à Greenfalls", ""))
                 .addManquante(new Bd(next(withId), "23", "Le Message du martyr", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_177856.jpg")
-                .withEditeur("Dargaud"));
+                .withEditeur("Dargaud")
+                .withFini(false));
 
         c.addBD(new Serie(next(withId), "Thorgal")
                 .addPossede(new Bd(next(withId), "1", "La magicienne trahie", ""))
@@ -272,25 +295,28 @@ public class CollectionBuilder {
                 .addManquante(new Bd(next(withId), "34", "Kah-Aniel", ""))
                 .addManquante(new Bd(next(withId), "HS1", "Trois femmes pour un heros", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_398.jpg")
-                .withEditeur("Le Lombard"));
+                .withEditeur("Le Lombard")
+                .withFini(false));
 
-        c.addBD(new Serie(next(withId), "Les complaintes des landes perdues cycle 1", true)
+        c.addBD(new Serie(next(withId), "Les complaintes des landes perdues cycle 1")
                 .addPossede(new Bd(next(withId), "1", "Sioban", ""))
                 .addPossede(new Bd(next(withId), "2", "Blackmore", ""))
                 .addPossede(new Bd(next(withId), "3", "Dame Gerfaut", ""))
                 .addPossede(new Bd(next(withId), "4", "Kyle of Klanach", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_21792.jpg")
-                .withEditeur("Dargaud"));
+                .withEditeur("Dargaud")
+                .withFini(false));
 
-        c.addBD(new Serie(next(withId), "Les complaintes des landes perdues cycle 2", true)
+        c.addBD(new Serie(next(withId), "Les complaintes des landes perdues cycle 2")
                 .addPossede(new Bd(next(withId), "1", "Moriganes", ""))
                 .addPossede(new Bd(next(withId), "2", "Le Guinea Lord", ""))
                 .addPossede(new Bd(next(withId), "3", "La Fée Sanctus", ""))
                 .addPossede(new Bd(next(withId), "4", "Sill Valt", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_40118.jpg")
-                .withEditeur("Dargaud"));
+                .withEditeur("Dargaud")
+                .withFini(false));
 
-        c.addBD(new Serie(next(withId), "Crepuscule des dieux", true)
+        c.addBD(new Serie(next(withId), "Crepuscule des dieux")
                 .addPossede(new Bd(next(withId), "0", "La Malédiction de l'Anneau", ""))
                 .addPossede(new Bd(next(withId), "1", "La Malédiction des Nibelungen", ""))
                 .addPossede(new Bd(next(withId), "2", "Siegfried", ""))
@@ -301,20 +327,23 @@ public class CollectionBuilder {
                 .addPossede(new Bd(next(withId), "7", "Le Grand Hiver", ""))
                 .addPossede(new Bd(next(withId), "8", "Le Sang d'Odin", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/CrepusculeDesDieuxLe0_24072009_052139.jpg")
-                .withEditeur("Soleil"));
+                .withEditeur("Soleil")
+                .withFini(false));
 
-        c.addBD(new Serie(next(withId), "Gardien du Feu", true)
+        c.addBD(new Serie(next(withId), "Gardien du Feu")
                 .addPossede(new Bd(next(withId), "1", "Goulven", ""))
                 .addPossede(new Bd(next(withId), "2", "Adèle", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/GardienDuFeuLe1_27022009_162821.jpg")
-                .withEditeur("Soleil"));
+                .withEditeur("Soleil")
+                .withFini(true));
 
-        c.addBD(new Serie(next(withId), "Frere Pardon", true)
+        c.addBD(new Serie(next(withId), "Frere Pardon")
                 .addPossede(new Bd(next(withId), "1", "Les eaux de Theodeus", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/frerepardoncouv.jpg")
-                .withEditeur("Soleil"));
+                .withEditeur("Soleil")
+                .withFini(false));
 
-        c.addBD(new Serie(next(withId), "Les forets d'Opale", true)
+        c.addBD(new Serie(next(withId), "Les forets d'Opale")
                 .addPossede(new Bd(next(withId), "1", "Le bracelet de Cohars", ""))
                 .addPossede(new Bd(next(withId), "2", "L'envers du grimoire", ""))
                 .addPossede(new Bd(next(withId), "3", "La cicatrice verte", ""))
@@ -324,14 +353,16 @@ public class CollectionBuilder {
                 .addPossede(new Bd(next(withId), "7", "Les Dents de pierre", ""))
                 .addPossede(new Bd(next(withId), "8", "Les hordes de la nuit", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/foretsdopale01.jpg")
-                .withEditeur("Soleil"));
+                .withEditeur("Soleil")
+                .withFini(true));
 
-        c.addBD(new Serie(next(withId), "Siegfried", true)
+        c.addBD(new Serie(next(withId), "Siegfried")
                 .addPossede(new Bd(next(withId), "1", "Siegfried", ""))
                 .addPossede(new Bd(next(withId), "2", "La Walkyrie", ""))
                 .addPossede(new Bd(next(withId), "3", "le crepuscule des dieux", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_67936.jpg")
-                .withEditeur("Dargaud"));
+                .withEditeur("Dargaud")
+                .withFini(true));
 
         c.addBD(new Serie(next(withId), "Arctica")
                 .addPossede(new Bd(next(withId), "1", "10.000 ans sous les glaces", ""))
@@ -341,7 +372,8 @@ public class CollectionBuilder {
                 .addPossede(new Bd(next(withId), "5", "Destination terre", ""))
                 .addManquante(new Bd(next(withId), "6", "Les fugitifs", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_69106.jpg")
-                .withEditeur("Delcourt"));
+                .withEditeur("Delcourt")
+                .withFini(false));
 
         c.addBD(new Serie(next(withId), "Black Op")
                 .addPossede(new Bd(next(withId), "6", "Tome 6", ""))
@@ -353,7 +385,8 @@ public class CollectionBuilder {
                 .addManquante(new Bd(next(withId), "7", "Tome 7", ""))
                 .addManquante(new Bd(next(withId), "8", "Tome 8", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/BlackOp-couv_100964.jpg")
-                .withEditeur("Dargaud"));
+                .withEditeur("Dargaud")
+                .withFini(false));
 
         c.addBD(new Serie(next(withId), "La quete de l'oiseau du temps")
                 .addPossede(new Bd(next(withId), "2", "Le temple de l'oubli", ""))
@@ -367,7 +400,8 @@ public class CollectionBuilder {
                 .addManquante(new Bd(next(withId), "HS1", "Esquisses - L'ami Javin", ""))
                 .addManquante(new Bd(next(withId), "HS2", "En quête de l'oiseau du temps", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_69122.jpg")
-                .withEditeur("Dargaud"));
+                .withEditeur("Dargaud")
+                .withFini(false));
 
         c.addBD(new Serie(next(withId), "Atalantes")
                 .addPossede(new Bd(next(withId), "1", "Le pacte", ""))
@@ -379,7 +413,8 @@ public class CollectionBuilder {
                 .addManquante(new Bd(next(withId), "7", "Le Dernier des Grands Anciens", ""))
                 .addManquante(new Bd(next(withId), "HS 1", "Les amis d'Atalantes", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/atalante01.jpg")
-                .withEditeur("Soleil"));
+                .withEditeur("Soleil")
+                .withFini(false));
 
         c.addBD(new Serie(next(withId), "Les 4 As")
                 .addPossede(new Bd(next(withId), "", "La Saucisse volante", ""))
@@ -426,7 +461,8 @@ public class CollectionBuilder {
                 .addManquante(new Bd(next(withId), "", "Mission Mars", ""))
                 .addManquante(new Bd(next(withId), "", "La balade des 4 as", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/quatreas8_03112002.jpg")
-                .withEditeur("Casterman"));
+                .withEditeur("Casterman")
+                .withFini(false));
 
         c.addBD(new Serie(next(withId), "Merlin")
                 .addPossede(new Bd(next(withId), "1", "La colère d'Ahès ", ""))
@@ -441,12 +477,14 @@ public class CollectionBuilder {
                 .addManquante(new Bd(next(withId), "10", "La princesse d'Ys", ""))
                 .addManquante(new Bd(next(withId), "11", "Le Roi Arthur", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/merlinnucleasoleil03.jpg")
-                .withEditeur("Soleil"));
+                .withEditeur("Soleil")
+                .withFini(false));
 
-        c.addBD(new Serie(next(withId), "L'epervier", true)
+        c.addBD(new Serie(next(withId), "L'epervier")
                 .addPossede(new Bd(next(withId), "1", "", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Epervier1_2l.jpg")
-                .withEditeur("Dupuis"));
+                .withEditeur("Dupuis")
+                .withFini(true));
 
         c.addBD(new Serie(next(withId), "Dick Herisson")
                 .addPossede(new Bd(next(withId), "1", "L'ombre du torrero", ""))
@@ -461,7 +499,8 @@ public class CollectionBuilder {
                 .addManquante(new Bd(next(withId), "10", "La brouette des morts", ""))
                 .addManquante(new Bd(next(withId), "11", "L'araignee pourpre 1/2", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/DickHerisson1a_21022005.jpg")
-                .withEditeur("Dargaud"));
+                .withEditeur("Dargaud")
+                .withFini(false));
 
         c.addBD(new Serie(next(withId), "Chaos Team")
                 .addPossede(new Bd(next(withId), "1.1", "", ""))
@@ -470,38 +509,44 @@ public class CollectionBuilder {
                 .addManquante(new Bd(next(withId), "2.2", "", ""))
                 .addManquante(new Bd(next(withId), "HS1", "La vengeance du béret vert", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_194532.jpg")
-                .withEditeur("Akileos"));
+                .withEditeur("Akileos")
+                .withFini(false));
 
         c.addBD(new Serie(next(withId), "Apocalypse Luis Royo")
                 .addPossede(new Bd(next(withId), "1", "", ""))
                 .withImageUrl("http://p7.storage.canalblog.com/70/29/712462/81182314_o.jpg")
-                .withEditeur(""));
+                .withEditeur("")
+                .withFini(false));
 
-        c.addBD(new Serie(next(withId), "Asgard", "1 2", true)
+        c.addBD(new Serie(next(withId), "Asgard")
                 .addPossede(new Bd(next(withId), "1", "Pied-de-fer", ""))
                 .addPossede(new Bd(next(withId), "2", "Le Serpent-Monde", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_151330.jpg")
-                .withEditeur("Dargaud"));
+                .withEditeur("Dargaud")
+                .withFini(true));
 
-        c.addBD(new Serie(next(withId), "Korrigans", "1 2 3 4", true)
+        c.addBD(new Serie(next(withId), "Korrigans")
                 .addPossede(new Bd(next(withId), "1", "Les enfants de la nuit", ""))
                 .addPossede(new Bd(next(withId), "2", "Guerriers des ténèbres", ""))
                 .addPossede(new Bd(next(withId), "3", "Le peuple de Dana", ""))
                 .addPossede(new Bd(next(withId), "4", "Le seigneur du chaos", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/150570_c.jpg")
-                .withEditeur("Delcourt"));
+                .withEditeur("Delcourt")
+                .withFini(true));
 
         c.addBD(new Serie(next(withId), "Elric")
                 .addPossede(new Bd(next(withId), "1", "Le trone de rubis", ""))
                 .addPossede(new Bd(next(withId), "2", "Stormbringer", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_187244.jpg")
-                .withEditeur("Glenat"));
+                .withEditeur("Glenat")
+                .withFini(true));
 
         c.addBD(new Serie(next(withId), "Tif et Tondu")
                 .addPossede(new Bd(next(withId), "5", "En amérique centrale", ""))
                 .addPossede(new Bd(next(withId), "22", "Un plan démoniaque", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_215593.jpg")
-                .withEditeur("Dupuis"));
+                .withEditeur("Dupuis")
+                .withFini(false));
 
         c.addBD(new Serie(next(withId), "Les druides")
                 .addPossede(new Bd(next(withId), "1", "Le mystère des Oghams ", ""))
@@ -511,9 +556,10 @@ public class CollectionBuilder {
                 .addPossede(new Bd(next(withId), "5", "La Pierre de destinée", ""))
                 .addPossede(new Bd(next(withId), "6", "Crépuscule", ""))
                 .addPossede(new Bd(next(withId), "7", "Les disparus de Cornouailles ", ""))
-                .addManquante(new Bd(next(withId), "8", "Les Secrets d'Orient", ""))
+                .addPossede(new Bd(next(withId), "8", "Les Secrets d'Orient", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_199535.jpg")
-                .withEditeur("Soleil"));
+                .withEditeur("Soleil")
+                .withFini(true));
 
         c.addBD(new Serie(next(withId), "La foret")
                 .addPossede(new Bd(next(withId), "1", "La foret", ""))
@@ -521,7 +567,8 @@ public class CollectionBuilder {
                 .addManquante(new Bd(next(withId), "3", "A vida y a muert", ""))
                 .addManquante(new Bd(next(withId), "4", "La veuve noire", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Foret02_80394.jpg")
-                .withEditeur("Casterman"));
+                .withEditeur("Casterman")
+                .withFini(false));
 
         c.addBD(new Serie(next(withId), "Slhoka")
                 .addPossede(new Bd(next(withId), "1", "L'île oubliée", ""))
@@ -533,9 +580,10 @@ public class CollectionBuilder {
                 .addPossede(new Bd(next(withId), "7", "L'Autre rive", ""))
                 .addPossede(new Bd(next(withId), "8", "L'epingle des ephemeres", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_163697.jpg")
-                .withEditeur("Soleil"));
+                .withEditeur("Soleil")
+                .withFini(true));
 
-        c.addBD(new Serie(next(withId), "Black et Mortimer", true)
+        c.addBD(new Serie(next(withId), "Black et Mortimer")
                 .addPossede(new Bd(next(withId), "1 2 3", "Le secret de l'Espadon", ""))
                 .addPossede(new Bd(next(withId), "1 2", "Le mystere de la grande pyramide", ""))
                 .addPossede(new Bd(next(withId), "", "La marque jaune", ""))
@@ -554,7 +602,8 @@ public class CollectionBuilder {
                 .addPossede(new Bd(next(withId), "", "L'onde Septimus", ""))
                 .addPossede(new Bd(next(withId), "", "Le baton de Plutarque 12/2014", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/Couv_115948.jpg")
-                .withEditeur("Black et Mortimer"));
+                .withEditeur("Black et Mortimer")
+                .withFini(true));
 
 
         c.addBD(new Serie(next(withId), "Harry Dickson")
@@ -568,7 +617,8 @@ public class CollectionBuilder {
                 .addManquante(new Bd(next(withId), "", "Le temple de fer", ""))
                 .addManquante(new Bd(next(withId), "", "Les gardiens du gouffre 09/2014", ""))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/harrydicksonzanon01.jpg")
-                .withEditeur("Art & B.D."));
+                .withEditeur("Art & B.D.")
+                .withFini(false));
 
         return c;
     }

@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.codehaus.jackson.annotate.JsonManagedReference;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="COLLECTION")
@@ -18,18 +18,18 @@ public class Collection {
     private Long id;
     @OneToMany(mappedBy = "collection", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
     @JsonManagedReference
-    private Set<Serie> listeSerie;
+    private List<Serie> listeSerie;
 
     public Collection() {
-        listeSerie = new HashSet<>(20);
+        listeSerie = new ArrayList<>(20);
     }
 
 
-    public Set<Serie> getListeSerie() {
+    public List<Serie> getListeSerie() {
         return listeSerie;
     }
 
-    public void setListeSerie(Set<Serie> listeSerie) {
+    public void setListeSerie(List<Serie> listeSerie) {
         this.listeSerie = listeSerie;
     }
 

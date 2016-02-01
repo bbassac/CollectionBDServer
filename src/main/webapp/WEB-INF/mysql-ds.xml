@@ -1,6 +1,7 @@
 <datasources>
    <datasource jndi-name="java:jboss/mysqlDS" pool-name="mysqlDS" jta="true">
-      <connection-url>jdbc:mysql://bx3gu5ncx.mysql.clvrcld.net:3306/bx3gu5ncx?useSSL=false</connection-url>
+      <!--<connection-url>jdbc:mysql://localhost:3306/bx3gu5ncx?useSSL=false</connection-url>-->
+       <connection-url>jdbc:mysql://bx3gu5ncx.mysql.clvrcld.net:3306/bx3gu5ncx?useSSL=false</connection-url>
          <!--<driver>com.mysql</driver>-->
         <driver>org.codehaus.cargo.classpath.mysql</driver>
       <pool>
@@ -17,10 +18,4 @@
         <share-prepared-statements/>
       </statement>
     </datasource>
-    <drivers>
-        <!--<driver name="com.mysql" module="com.mysql">-->
-      <driver name="com.mysql" module="org.codehaus.cargo.classpath.mysql">
-        <xa-datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</xa-datasource-class>
-      </driver>
-    </drivers>
 </datasources>

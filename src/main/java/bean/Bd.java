@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "BD")
 @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
-public class Bd {
+public class Bd implements Comparable{
     @Id
     @Column(name="ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -76,5 +76,10 @@ public class Bd {
 
     public void setSerie(Serie serie) {
         this.serie = serie;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return  this.getId().compareTo(((Bd)o).getId());
     }
 }

@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class ListBDResource {
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces("application/json;charset=utf-8")
     public Collection get() throws SQLException, NamingException {
         return CollectionBuilder.getCollection(true);
     }
