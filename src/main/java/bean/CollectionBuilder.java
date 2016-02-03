@@ -73,7 +73,7 @@ public class CollectionBuilder {
                 .withEditeur("Soleil Celtic")
                 .withFini(true));
 
-        c.addBD(new Serie(next(withId), "Samurai Legendes")
+        c.addBD(new Serie(next(withId), "Samurai Légendes")
                 .addPossede(new Bd(next(withId), "1", "Furiko", ""))
                 .addPossede(new Bd(next(withId), "2", "L'échange", ""))
                 .addPossede(new Bd(next(withId), "3", "L'aube Rouge", ""))
