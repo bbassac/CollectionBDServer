@@ -6,17 +6,22 @@ import bean.Bd;
 import bean.Collection;
 import bean.CollectionBuilder;
 import bean.Serie;
-import com.google.gson.GsonBuilder;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.jboss.resteasy.client.jaxrs.ResteasyClient;
+import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
+import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 import org.testng.annotations.Test;
 
+import javax.ws.rs.core.Response;
 import java.io.*;
 
 public class GenerateExcelTest {
     public static final String CRLF = System.getProperty("line.separator");
 
-    private static void exportExcel() throws IOException {
+    @Test(enabled = false)
+    public  void exportExcel() throws IOException {
         Workbook wb = new HSSFWorkbook();
         //Workbook wb = new XSSFWorkbook();
         CreationHelper createHelper = wb.getCreationHelper();
@@ -29,18 +34,36 @@ public class GenerateExcelTest {
         fileOut.close();
     }
 
-    public static void export() {
+    @Test(enabled = false)
+    public void exportFromJackson() throws IOException {
         Collection coll = CollectionBuilder.getCollection(true);
-        String json = new GsonBuilder().setPrettyPrinting().create().toJson(coll);
+
+        ObjectMapper mapper = new ObjectMapper();
+        String string = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(coll);
+        try {
+            File file = new File("D:\\listing");
+            BufferedWriter output = new BufferedWriter(new FileWriter(file));
+            output.write(string);
+            output.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test(enabled = false)
+    public void export() {
+        Collection coll = CollectionBuilder.getCollection(true);
 
         StringBuilder builder = new StringBuilder();
 
-        builder.append(json);
+        ResteasyClient client = new ResteasyClientBuilder().build();
+        ResteasyWebTarget target = client.target("http://localhost:8080/collectionbdserver/rest/listing");
+        Response response = target.request().get();
 
         try {
             File file = new File("D:\\listing");
             BufferedWriter output = new BufferedWriter(new FileWriter(file));
-            output.write(builder.toString());
+            output.write(response.readEntity(String.class));
             output.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -103,9 +126,4 @@ public class GenerateExcelTest {
         }
     }
 
-    @Test(enabled = false)
-    public void testExport() throws IOException {
-        //export();
-        exportExcel();
-    }
 }
