@@ -175,6 +175,28 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>com.qmino</groupId>
+                <artifactId>miredot-plugin</artifactId>
+                <version>1.6.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>restdoc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <license>
+                        UHJvamVjdHxvcmcubGlvbmNvcnBzLmNvbGxlY3Rpb25iZHNlcnZlcnwyMDE3LTAzLTA4fHRydWUjTUMwQ0ZDQmdGUDFxSC96M2w4Y2hvOUdJRzBzaTNxK3VBaFVBak82ZmFXZ2theHVHa2psMGNCcEEvTDhBRy9nPQ==
+                    </license>
+                    <restModel>
+                        <restFramework>
+                            <name>jax-rs</name>
+                        </restFramework>
+                    </restModel>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
