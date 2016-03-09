@@ -1,9 +1,8 @@
 package bean;
 
-import java.util.*;
-
 public class CollectionBuilder {
     static long i = 0;
+
     public static Collection getCollection(boolean withId) {
         Collection c = new Collection();
         c.setId(next(withId));
@@ -61,7 +60,7 @@ public class CollectionBuilder {
                 .addPossede(new Bd(next(withId), "7", "Frères d'armes", ""))
                 .addPossede(new Bd(next(withId), "8", "Frères de sang", ""))
                 .addPossede(new Bd(next(withId), "9", "Ogomo", ""))
-                .addManquante(new Bd(next(withId),"10", "Ririko","http://www.bedetheque.com/media/Couvertures/Couv_258014.jpg"))
+                .addManquante(new Bd(next(withId), "10", "Ririko", "http://www.bedetheque.com/media/Couvertures/Couv_258014.jpg"))
                 .withImageUrl("http://www.bedetheque.com/media/Couvertures/samurai02.jpg")
                 .withEditeur("Soleil")
                 .withFini(false));
@@ -625,9 +624,9 @@ public class CollectionBuilder {
 
 
     private static Long next(boolean withId) {
-        if(withId) {
+        if (withId) {
             return i++;
-        }else{
+        } else {
             return null;
         }
     }

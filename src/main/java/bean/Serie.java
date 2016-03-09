@@ -8,21 +8,22 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "SERIE")
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Serie {
     @Id
-    @Column(name="ID")
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="NOM")
+    @Column(name = "NOM")
     private String nom;
-    @Column(name="FINI")
+    @Column(name = "FINI")
     private boolean fini = false;
-    @Column(name="IMAGE_URL")
+    @Column(name = "IMAGE_URL")
     private String imageUrl;
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = CascadeType.ALL)
@@ -35,7 +36,7 @@ public class Serie {
     @JoinColumn(nullable = true)
     @JsonManagedReference
     private List<Bd> listManquante;
-    @Column(name="EDITEUR")
+    @Column(name = "EDITEUR")
     private String editeur;
 
     @ManyToOne

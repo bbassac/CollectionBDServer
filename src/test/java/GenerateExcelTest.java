@@ -20,56 +20,6 @@ import java.io.*;
 public class GenerateExcelTest {
     public static final String CRLF = System.getProperty("line.separator");
 
-    @Test(enabled = false)
-    public  void exportExcel() throws IOException {
-        Workbook wb = new HSSFWorkbook();
-        //Workbook wb = new XSSFWorkbook();
-        CreationHelper createHelper = wb.getCreationHelper();
-
-        fillBody(wb, createHelper);
-
-        // Write the output to a file
-        FileOutputStream fileOut = new FileOutputStream("D:\\listing.xls");
-        wb.write(fileOut);
-        fileOut.close();
-    }
-
-    @Test(enabled = false)
-    public void exportFromJackson() throws IOException {
-        Collection coll = CollectionBuilder.getCollection(true);
-
-        ObjectMapper mapper = new ObjectMapper();
-        String string = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(coll);
-        try {
-            File file = new File("D:\\listing");
-            BufferedWriter output = new BufferedWriter(new FileWriter(file));
-            output.write(string);
-            output.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Test(enabled = false)
-    public void export() {
-        Collection coll = CollectionBuilder.getCollection(true);
-
-        StringBuilder builder = new StringBuilder();
-
-        ResteasyClient client = new ResteasyClientBuilder().build();
-        ResteasyWebTarget target = client.target("http://localhost:8080/collectionbdserver/rest/listing");
-        Response response = target.request().get();
-
-        try {
-            File file = new File("D:\\listing");
-            BufferedWriter output = new BufferedWriter(new FileWriter(file));
-            output.write(response.readEntity(String.class));
-            output.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     private static void fillBody(Workbook wb, CreationHelper createHelper) {
         Sheet sheet = wb.createSheet("Listing");
         Collection coll = CollectionBuilder.getCollection(true);
@@ -123,6 +73,56 @@ public class GenerateExcelTest {
         }
         for (int i = 0; i <= 7; i++) {
             sheet.autoSizeColumn(i);
+        }
+    }
+
+    @Test(enabled = false)
+    public void exportExcel() throws IOException {
+        Workbook wb = new HSSFWorkbook();
+        //Workbook wb = new XSSFWorkbook();
+        CreationHelper createHelper = wb.getCreationHelper();
+
+        fillBody(wb, createHelper);
+
+        // Write the output to a file
+        FileOutputStream fileOut = new FileOutputStream("D:\\listing.xls");
+        wb.write(fileOut);
+        fileOut.close();
+    }
+
+    @Test()
+    public void exportFromJackson() throws IOException {
+        Collection coll = CollectionBuilder.getCollection(true);
+
+        ObjectMapper mapper = new ObjectMapper();
+        String string = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(coll);
+        try {
+            File file = new File("D:\\listing");
+            BufferedWriter output = new BufferedWriter(new FileWriter(file));
+            output.write(string);
+            output.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test(enabled = false)
+    public void export() {
+        Collection coll = CollectionBuilder.getCollection(true);
+
+        StringBuilder builder = new StringBuilder();
+
+        ResteasyClient client = new ResteasyClientBuilder().build();
+        ResteasyWebTarget target = client.target("http://localhost:8080/collectionbdserver/rest/listing");
+        Response response = target.request().get();
+
+        try {
+            File file = new File("D:\\listing");
+            BufferedWriter output = new BufferedWriter(new FileWriter(file));
+            output.write(response.readEntity(String.class));
+            output.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

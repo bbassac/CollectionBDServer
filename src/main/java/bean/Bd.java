@@ -11,17 +11,17 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "BD")
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
-public class Bd implements Comparable{
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+public class Bd implements Comparable {
     @Id
-    @Column(name="ID")
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="TITRE")
+    @Column(name = "TITRE")
     private String titre;
-    @Column(name="NUMERO")
+    @Column(name = "NUMERO")
     private String numero;
-    @Column(name="COUVERTURE_URL")
+    @Column(name = "COUVERTURE_URL")
     private String couvertureUrl;
 
     @ManyToOne
@@ -80,6 +80,6 @@ public class Bd implements Comparable{
 
     @Override
     public int compareTo(Object o) {
-        return  this.getId().compareTo(((Bd)o).getId());
+        return this.getId().compareTo(((Bd) o).getId());
     }
 }
