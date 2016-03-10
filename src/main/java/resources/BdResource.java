@@ -1,6 +1,6 @@
 package resources;
 
-import bean.Bd;
+import com.qmino.miredot.annotations.ReturnType;
 import infrastructure.Repository;
 
 import javax.ejb.Stateless;
@@ -10,6 +10,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 import java.sql.SQLException;
 
 @Path("/bds/{id}")
@@ -19,10 +20,17 @@ public class BdResource {
     @Inject
     Repository repository;
 
+    /**
+     * @param id Bd id
+     * @return Bd
+     * @title Bd individual Endpoint
+     * @servicetag Retrive spécific informations for a given bd id
+     **/
     @GET
     @Produces("application/json;charset=utf-8")
-    public Bd get(@PathParam("id") Long id) throws SQLException, NamingException {
-        return repository.getBdFromId(id);
+    @ReturnType("bean.Bd")
+    public Response get(@PathParam("id") Long id) throws SQLException, NamingException {
+        return Response.status(201).entity(repository.getBdFromId(id)).build();
     }
 
 

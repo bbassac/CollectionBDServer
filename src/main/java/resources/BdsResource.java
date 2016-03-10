@@ -1,6 +1,6 @@
 package resources;
 
-import bean.Bd;
+import com.qmino.miredot.annotations.ReturnType;
 import infrastructure.Repository;
 
 import javax.ejb.Stateless;
@@ -9,8 +9,8 @@ import javax.naming.NamingException;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 import java.sql.SQLException;
-import java.util.List;
 
 @Path("/bds")
 @Stateless
@@ -18,10 +18,16 @@ public class BdsResource {
     @Inject
     Repository repository;
 
+    /**
+     * @return list of Bds
+     * @title Bd Endpoint
+     * @servicetag Retrive entire list of Bds
+     **/
     @GET
     @Produces("application/json;charset=utf-8")
-    public List<Bd> get() throws SQLException, NamingException {
-        return repository.getAllBd();
+    @ReturnType("java.util.List<bean.Bd>")
+    public Response get() throws SQLException, NamingException {
+        return Response.status(201).entity(repository.getAllBd()).build();
     }
 
 
