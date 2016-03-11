@@ -1,6 +1,6 @@
 package resources;
 
-import bean.Serie;
+import com.qmino.miredot.annotations.ReturnType;
 import infrastructure.Repository;
 
 import javax.ejb.Stateless;
@@ -9,8 +9,8 @@ import javax.naming.NamingException;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 import java.sql.SQLException;
-import java.util.List;
 
 @Path("/series")
 @Stateless
@@ -19,10 +19,16 @@ public class SeriesResource {
     @Inject
     Repository repository;
 
+    /**
+     * @title Serie Endpoint
+     * @servicetag Retrive full list of series
+     * @return List of series
+     */
     @GET
     @Produces("application/json;charset=utf-8")
-    public List<Serie> get() throws SQLException, NamingException {
-        return repository.getAllSeries();
+    @ReturnType("java.util.List<bean.Serie>")
+    public Response get() throws SQLException, NamingException {
+        return Response.status(200).entity(repository.getAllSeries()).build();
     }
 
 

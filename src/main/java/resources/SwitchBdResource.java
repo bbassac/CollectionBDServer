@@ -2,7 +2,9 @@ package resources;
 
 import bean.Bd;
 import bean.Serie;
+import com.qmino.miredot.annotations.ReturnType;
 
+import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,8 +22,14 @@ public class SwitchBdResource {
     @PersistenceContext(unitName = "persistenceUnit")
     private EntityManager entityManager;
 
+    /**
+     * @title Switch Endpoint
+     * @servicetag Set an "Manquante" bd as "Possede"
+     * @return if of bd
+     */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @ReturnType("java.lang.Long")
     public Response post(@PathParam("bdId") Long bdId) {
 
         Serie serie = (Serie) entityManager

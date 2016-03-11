@@ -12,6 +12,11 @@ import java.sql.SQLException;
 @Path("/listing")
 public class ListBDResource {
 
+    /**
+     * @title Listing Endpoint
+     * @servicetag Retrieve static collection Not up to date
+     * @return Collection of Series and Bds
+     */
     @GET
     @Produces("application/json;charset=utf-8")
     public Collection get() throws SQLException, NamingException {
