@@ -117,6 +117,7 @@
     </dependencies>
     <build>
         <finalName>${project.artifactId}</finalName>
+
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -215,12 +216,24 @@
                             <sections>
                                 <strategy>singlepage</strategy>
                             </sections>
-                            <baseUrl>http://lioncorps.fr/base</baseUrl>
                             <hideIssuesTab>true</hideIssuesTab>
                             <hideLogoOnTop>true</hideLogoOnTop>
                         </html>
                         <title>Api Documentation</title>
                     </output>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <!-- this is relative to the pom.xml directory -->
+                            <directory>target/miredot</directory>
+                        </resource>
+                    </webResources>
                 </configuration>
             </plugin>
         </plugins>
