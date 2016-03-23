@@ -15,6 +15,8 @@
         <lib.jackson2.version>2.4.1</lib.jackson2.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<jboss-as.home>${env.JBOSS_HOME}</jboss-as.home>
+        <jboss.deployments.dir>${env.JBOSS_HOME}/standalone/deployments</jboss.deployments.dir>
     </properties>
 	 <pluginRepositories>
 		  <pluginRepository>
@@ -139,9 +141,9 @@
                 <plugin>
                     <groupId>org.wildfly.plugins</groupId>
                     <artifactId>wildfly-maven-plugin</artifactId>
-                    <version>${plugin.wildfly-maven-plugin.version}</version>
+                    <version>1.0.2.Final</version>
                     <configuration>
-                        <serverConfig>standalone-full.xml</serverConfig>
+                        <serverConfig>standalone.xml</serverConfig>
                         <jvmArgs>
                             -Djboss.bind.address=0.0.0.0
                             -XX:PermSize=256m
