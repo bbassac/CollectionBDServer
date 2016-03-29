@@ -29,7 +29,7 @@ public class CollectionResource {
     @Produces("application/json;charset=utf-8")
     @ReturnType("bean.Collection")
     public Response get() throws SQLException, NamingException {
-        return Response.status(201).entity(repository.getCollection()).build();
+        return Response.status(200).entity(repository.getCollection()).build();
     }
 
      /**
@@ -39,14 +39,15 @@ public class CollectionResource {
      */
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public void post() throws SQLException, NamingException {
+    public Response post() throws SQLException, NamingException {
         repository.createCollection(CollectionBuilder.getCollection(false));
+        return Response.status(201).build();
     }
 
     /**
      * @title Collection Endpoint
-     * @servicetag Delete all collections
-     * @return structure of deleted items
+     * @servicetag Delete a full collection
+     * @return Deleted structure
      */
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)

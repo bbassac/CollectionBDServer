@@ -143,7 +143,7 @@
                     <artifactId>wildfly-maven-plugin</artifactId>
                     <version>1.0.2.Final</version>
                     <configuration>
-                        <serverConfig>standalone.xml</serverConfig>
+                        <serverConfig>standalone-full.xml</serverConfig>
                         <jvmArgs>
                             -Djboss.bind.address=0.0.0.0
                             -XX:PermSize=256m

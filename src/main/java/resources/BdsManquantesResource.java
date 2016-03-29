@@ -27,7 +27,7 @@ public class BdsManquantesResource {
     @Produces("application/json;charset=utf-8")
     @ReturnType("java.util.List<bean.BdManquante>")
     public Response get() throws SQLException, NamingException {
-        return Response.status(201).entity(repository.getAllBdManquantes()).build();
+        return Response.status(200).entity(repository.getAllBdManquantes()).build();
     }
 
 

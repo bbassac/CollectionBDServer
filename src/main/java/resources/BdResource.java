@@ -30,7 +30,7 @@ public class BdResource {
     @Produces("application/json;charset=utf-8")
     @ReturnType("bean.Bd")
     public Response get(@PathParam("id") Long id) throws SQLException, NamingException {
-        return Response.status(201).entity(repository.getBdFromId(id)).build();
+        return Response.status(200).entity(repository.getBdFromId(id)).build();
     }
 
 
