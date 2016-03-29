@@ -16,6 +16,8 @@ import org.testng.annotations.Test;
 
 import javax.ws.rs.core.Response;
 import java.io.*;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class GenerateExcelTest {
     public static final String CRLF = System.getProperty("line.separator");

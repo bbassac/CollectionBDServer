@@ -2,6 +2,7 @@ package infrastructure;
 
 import bean.Bd;
 import bean.Collection;
+import bean.DeleteResult;
 import bean.Serie;
 
 import javax.persistence.EntityManager;
@@ -29,7 +30,8 @@ public class Repository {
     }
 
     public Collection getCollection() {
-        return (Collection) entityManager.createQuery("SELECT c FROM Collection c order by c.id ASC").getResultList().get(0);
+        List<Collection> resultList = entityManager.createQuery("SELECT c FROM Collection c order by c.id ASC").getResultList();
+        return  resultList.isEmpty()? null : resultList.get(0);
     }
 
     public void createCollection(Collection c) {
@@ -42,5 +44,13 @@ public class Repository {
 
     public List<Serie> getAllSeries() {
         return entityManager.createQuery("SELECT s FROM Serie s").getResultList();
+    }
+
+    public DeleteResult deleteCollection() {
+        DeleteResult result = new DeleteResult();
+        result.setBdDeleted(entityManager.createQuery("DELETE FROM Bd").executeUpdate());
+        result.setSerieDeleted(entityManager.createQuery("DELETE FROM Serie").executeUpdate());
+        result.setCollectionDeleted(entityManager.createQuery("DELETE FROM Collection").executeUpdate());
+        return result;
     }
 }
