@@ -43,9 +43,14 @@ public class CollectionResource {
         repository.createCollection(CollectionBuilder.getCollection(false));
     }
 
+    /**
+     * @title Collection Endpoint
+     * @servicetag Delete all collections
+     * @return structure of deleted items
+     */
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
-    @ReturnType("bean.DelteResult")
+    @ReturnType("bean.DeleteResult")
     public Response delete(){
         return Response.status(201).entity(repository.deleteCollection()).build();
     }

@@ -1,9 +1,7 @@
 package infrastructure;
 
-import bean.Bd;
-import bean.Collection;
-import bean.DeleteResult;
-import bean.Serie;
+import bean.*;
+import com.google.common.base.Strings;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,6 +9,7 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -52,5 +51,33 @@ public class Repository {
         result.setSerieDeleted(entityManager.createQuery("DELETE FROM Serie").executeUpdate());
         result.setCollectionDeleted(entityManager.createQuery("DELETE FROM Collection").executeUpdate());
         return result;
+    }
+
+    public List<BdManquante> getAllBdManquantes() {
+        List<Serie> series = getAllSeries();
+        List<BdManquante> toReturn=new ArrayList<>();
+        for(Serie serie : series){
+            if (serie.getListManquante()!= null && serie.getListManquante().size()>0){
+                for (Bd bd : serie.getListManquante()) {
+                    BdManquante item = new BdManquante();
+                    item.setSerieId(serie.getId());
+                    item.setSerieName(serie.getNom());
+                    item.setEditeur(serie.getEditeur());
+                    item.setBdid(bd.getId());
+                    if (!Strings.isNullOrEmpty(bd.getCouvertureUrl()))
+                    {
+                        item.setUrlImage(bd.getCouvertureUrl());
+                    }else {
+                        item.setUrlImage(serie.getImageUrl());
+                    }
+
+                    item.setTitre(bd.getTitre());
+                    item.setNumero(bd.getNumero());
+                    toReturn.add(item);
+                }
+
+            }
+        }
+        return toReturn;
     }
 }

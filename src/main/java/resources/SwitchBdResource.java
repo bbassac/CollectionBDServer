@@ -28,7 +28,6 @@ public class SwitchBdResource {
      * @return if of bd
      */
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
     @ReturnType("java.lang.Long")
     public Response post(@PathParam("bdId") Long bdId) {
 
