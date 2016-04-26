@@ -2,6 +2,7 @@ package resources;
 
 import bean.Collection;
 import bean.CollectionBuilder;
+import infrastructure.metrics.Metric;
 
 import javax.naming.NamingException;
 import javax.ws.rs.GET;
@@ -10,6 +11,7 @@ import javax.ws.rs.Produces;
 import java.sql.SQLException;
 
 @Path("/listing")
+@Metric
 public class ListBDResource {
 
     /**

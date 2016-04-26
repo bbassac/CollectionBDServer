@@ -2,6 +2,7 @@ package resources;
 
 import com.qmino.miredot.annotations.ReturnType;
 import infrastructure.Repository;
+import infrastructure.metrics.Metric;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -15,6 +16,7 @@ import java.sql.SQLException;
 
 @Path("/series/{id}")
 @Stateless
+@Metric
 public class SerieResource {
 
     @Inject

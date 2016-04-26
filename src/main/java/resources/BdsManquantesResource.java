@@ -2,6 +2,7 @@ package resources;
 
 import com.qmino.miredot.annotations.ReturnType;
 import infrastructure.Repository;
+import infrastructure.metrics.Metric;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -14,6 +15,7 @@ import java.sql.SQLException;
 
 @Path("/bds/manquantes")
 @Stateless
+@Metric
 public class BdsManquantesResource {
     @Inject
     Repository repository;

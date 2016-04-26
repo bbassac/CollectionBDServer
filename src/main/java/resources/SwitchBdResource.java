@@ -3,6 +3,7 @@ package resources;
 import bean.Bd;
 import bean.Serie;
 import com.qmino.miredot.annotations.ReturnType;
+import infrastructure.metrics.Metric;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
@@ -17,6 +18,7 @@ import javax.ws.rs.core.Response;
 
 @Path("/switch/{bdId}")
 @Stateless
+@Metric
 public class SwitchBdResource {
 
     @PersistenceContext(unitName = "persistenceUnit")
